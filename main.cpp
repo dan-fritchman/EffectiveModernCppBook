@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <array>
+#include <vector>
+#include <map>
+
 
 template<typename T>
 void print(const T &p) {
@@ -125,6 +128,48 @@ void test_decltype() {
     print(y);*/
 }
 
+void test_map() {
+    print("No worky yet");
+//    std::map<std::string, int> m {"a", 1};
+}
+
+void test_init() {
+    std::vector<int> v{1, 3, 5};
+    print(v[0]);
+}
+
+template<typename F, typename M, typename P>
+decltype(auto) lock_and_call(F func, M &mutex, P ptr) {
+    using MuxGuard = std::lock_guard<M>;
+    MuxGuard g(mutex);
+    return func(ptr);
+};
+
+int f1(void *p) {
+    /* Really just checks whether pointer-argument p is `nullptr`.
+     * Returns one of two integer values. */
+    if (p == nullptr) {
+        return 23;
+    } else {
+        return 45;
+    }
+}
+
+void test_lock_guard() {
+    /* Test the "wrap with mutex-locking template" above. */
+    std::mutex m1;
+
+    // Try once with a null-pointer
+    auto i = 0;
+    i = lock_and_call(f1, m1, nullptr);
+    print(i);
+
+    // And try again with a (hopefully) non-null-pointer
+    int *p = &i;
+    i = lock_and_call(f1, m1, p);
+    print(i);
+}
+
 int main() {
     // Tell the people we alive
     print("Hello World");
@@ -133,6 +178,9 @@ int main() {
     test_templates();
     test_auto();
     test_decltype();
+    test_map();
+    test_init();
+    test_lock_guard();
 
     // And bounce
     return 0;
