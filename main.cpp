@@ -170,6 +170,19 @@ void test_lock_guard() {
     print(i);
 }
 
+void test_func_ptr(){
+    std::function<bool(const std::unique_ptr<int>&,
+            const std::unique_ptr<int>&)> func;
+}
+
+void test_scoped_enum(){
+    enum class Color {red, white, blue};
+    auto r = Color::red;
+    auto b = Color::blue;
+
+}
+
+
 int main() {
     // Tell the people we alive
     print("Hello World");
@@ -181,6 +194,9 @@ int main() {
     test_map();
     test_init();
     test_lock_guard();
+
+    test_func_ptr();
+    test_scoped_enum();
 
     // And bounce
     return 0;
