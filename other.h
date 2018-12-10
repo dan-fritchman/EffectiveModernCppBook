@@ -8,6 +8,9 @@
 #ifndef other_hpp
 #define other_hpp
 
-#include <stdio.h>
+void test_other_stuff() {
+    return;
+}
+
 
 #endif /* other_hpp */

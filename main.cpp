@@ -7,12 +7,11 @@
 #include <vector>
 #include <map>
 
-
-template<typename T>
-void print(const T &p) {
-    /* Maybe the python talking. */
-    std::cout << typeid(p).name() << " " << p << std::endl;
-}
+#include "print.h"
+#include "other.h"
+#include "enum.h"
+#include "deleted.h"
+#include "override.h"
 
 template<typename T>
 void f(const T &p) {
@@ -170,16 +169,8 @@ void test_lock_guard() {
     print(i);
 }
 
-void test_func_ptr(){
-    std::function<bool(const std::unique_ptr<int>&,
-            const std::unique_ptr<int>&)> func;
-}
-
-void test_scoped_enum(){
-    enum class Color {red, white, blue};
-    auto r = Color::red;
-    auto b = Color::blue;
-
+void test_func_ptr() {
+    std::function<bool(const std::unique_ptr<int> &, const std::unique_ptr<int> &)> func;
 }
 
 
@@ -188,16 +179,19 @@ int main() {
     print("Hello World");
 
     // Run all this stuff
+    test_other_stuff();
     test_templates();
     test_auto();
     test_decltype();
     test_map();
     test_init();
     test_lock_guard();
-
     test_func_ptr();
     test_scoped_enum();
+    test_deleted();
+    test_override();
 
     // And bounce
     return 0;
 }
+
