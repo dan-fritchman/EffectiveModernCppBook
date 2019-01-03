@@ -22,8 +22,7 @@ public:
 void test_override() {
     auto d = Derived();
     d.mf1();
-    d.mf2
-    return;
+    d.mf2(4);
 }
 
 #endif //CPP_TUTORIALS_OVERRIDE_H_H
