@@ -179,7 +179,7 @@ int main() {
     print("Hello World");
 
     // Run all this stuff
-    test_other_stuff();
+    other::test_other_stuff();
     test_templates();
     test_auto();
     test_decltype();
@@ -187,8 +187,8 @@ int main() {
     test_init();
     test_lock_guard();
     test_func_ptr();
-    test_scoped_enum();
-    test_deleted();
+    enums::test_scoped_enum();
+    deleted::test_deleted();
     test_override();
 
     // And bounce

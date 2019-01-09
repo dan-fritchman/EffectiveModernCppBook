@@ -8,9 +8,10 @@
 #ifndef other_hpp
 #define other_hpp
 
-void test_other_stuff() {
-    return;
+namespace other {
+    void test_other_stuff() {
+        return;
+    }
 }
-
 
 #endif /* other_hpp */
