@@ -6,9 +6,9 @@
 #define CPP_TUTORIALS_ENUM_H
 
 namespace enums {
-    template<typename E>
-    constexpr std::underlying_type_t<E> as_underlying_type(E enumerator) noexcept {
-        return static_cast<std::underlying_type_t<E>>(enumerator);
+    template<typename EnumClass>
+    constexpr auto as_underlying_type(EnumClass enum_cls) noexcept {
+        return static_cast<std::underlying_type_t<EnumClass>>(enum_cls);
     }
 
     enum class Color {
@@ -19,7 +19,7 @@ namespace enums {
         before, during, after
     };
 
-    void test_scoped_enum() {
+    void test_all() {
         /* Try making some of the new scoped-enum classes,
          * converting and printing them. */
         auto red = false;

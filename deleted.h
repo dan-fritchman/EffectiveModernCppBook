@@ -47,6 +47,47 @@ namespace deleted {
         //    w.processPointer(vp);
     }
 
+
+    class Base {
+        /*
+         * Idea is to test deleting operators.
+         * No worky, yet.
+         */
+    public:
+        int k{0};
+
+        Base() {
+            print("Running Default Constructor");
+        };
+
+        Base(const Base &base) {
+            k = base.k;
+        }
+
+        Base &operator=(const Base &base) {
+            // FIXME: Why don't this get called yet?
+            print("Running Assignment Op");
+            if (&base == this) {
+                return *this;
+            }
+            this->k = base.k;
+            return *this;
+        }
+    };
+
+    void test_delete_ops() {
+        // FIXME: not alive yet
+        Base b;
+        Base b2 = b;
+        Base b3(b);
+        Base b4{b};
+    }
+
+    void test_all() {
+        test_deleted();
+        test_delete_ops();
+    }
+
 }
 
 #endif //CPP_TUTORIALS_DELETED_H
