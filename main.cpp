@@ -19,7 +19,8 @@
 #include "nullptr.h"
 #include "const_thread.h"
 #include "move.h"
-
+#include "smart_ptr.h"
+#include "pimpl/tests.h"
 
 int main() {
     // Tell the people we alive
@@ -36,7 +37,9 @@ int main() {
     nullptrs::test_all();
     const_thread::test_all();
     moves::test_all();
+    smart_ptr::test_all();
     other::test_all();
+    pimpl::test_all();
 
     // And bounce
     print("Goodbye World!");
