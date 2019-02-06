@@ -8,7 +8,7 @@ RUN apt-get -y update && apt-get install -y
 RUN apt-get -y install clang cmake
 
 # Copy the current folder which contains C++ source code to the Docker image under /usr/src
-COPY .. /usr/src/dockertest1
+COPY ../.. /usr/src/dockertest1
 
 # Specify the working directory
 WORKDIR /usr/src/dockertest1
