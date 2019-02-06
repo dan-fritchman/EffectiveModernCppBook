@@ -20,6 +20,9 @@
 #include "const_thread.h"
 #include "move.h"
 #include "smart_ptr.h"
+#include "lambda.h"
+#include "concurrency.h"
+#include "tweaks.h"
 #include "pimpl/tests.h"
 
 int main() {
@@ -40,6 +43,9 @@ int main() {
     smart_ptr::test_all();
     other::test_all();
     pimpl::test_all();
+    lamdbas::test_all();
+    concurrency::test_all();
+    tweaks::test_all();
 
     // And bounce
     print("Goodbye World!");
